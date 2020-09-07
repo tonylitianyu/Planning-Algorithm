@@ -1,4 +1,4 @@
-# Planning-Algorithm
+# Planning-Algorithm-Visualization
 
  Implementation practice for popular planning algorithms: A*, D*, RRT, RRT*
  
