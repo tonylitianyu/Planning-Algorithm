@@ -4,15 +4,15 @@ import pygame
 
 
 class Grid:
-    def __init__(self,windowSize,n_block):
+    def __init__(self,windowSize,n_block,origin,target):
         self.n_block = n_block
         self.windowSize = windowSize
         pygame.init()
         self.SCREEN = pygame.display.set_mode((self.windowSize,self.windowSize))
         self.SCREEN.fill((0,0,0))
 
-        self.origin = [0,0]
-        self.target = [n_block-1, n_block-1]
+        self.origin = origin
+        self.target = target
 
         self.gridArray = []
         self.fillGridArray()
@@ -70,6 +70,11 @@ class Grid:
 
                 else:
                     pygame.draw.rect(self.SCREEN,(200,200,200),rect,1)
+
+    def drawPath(self,path):
+        for i in range(len(path)):
+            waypoint = path[i]
+            self.gridArray[waypoint[0]][waypoint[1]] = 4
 
 
 
