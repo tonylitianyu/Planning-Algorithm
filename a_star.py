@@ -1,15 +1,20 @@
 from queue import PriorityQueue
+
 import math
 
 
 class A_Star:
-    def __init__(self,origin,target,n_block):
+    def __init__(self,origin,target,n_block, obstacle):
         self.origin = origin
         self.target = target
         self.n_block = n_block
+        self.obstacle = obstacle
 
         self.openSet = PriorityQueue()
         self.openSet.put((0,self.origin))
+
+        self.closedSet = []
+        
 
 
 
@@ -43,19 +48,22 @@ class A_Star:
     def nextStep(self):
         if self.openSet.empty() == True:
             #print("openSet is empty")
-            return False, []
+            return False, [], self.closedSet
 
         current = self.openSet.get()[1]
         #print(current)
         if current == self.target:
+            #finish!!!!!!!!!!!!!!!!!
             finalResult = self.reconstruct()
             
-            return True, finalResult
+            return True, finalResult, self.closedSet
 
         
         currentNeighbor = self.getNeighbor(current)
 
         for neighbor in currentNeighbor:
+            self.closedSet.append(neighbor)
+
             temp_g = self.gScore[current[0]][current[1]]+1
 
             
@@ -79,26 +87,30 @@ class A_Star:
                     self.openSet.put((self.fScore[neighbor[0]][neighbor[1]],neighbor))
 
 
-        return False, []
+        return False, [], self.closedSet
 
 
 
     def getNeighbor(self,current):
         neighbor = []
 
-        if current[0] != 0:
+        leftNeighbor = [current[0]-1,current[1]]
+        if leftNeighbor[0] > -1 and leftNeighbor not in self.obstacle:
             #left neighbor
             neighbor.append([current[0]-1,current[1]])
 
-        if current[1] != 0:
+        upNeighbor = [current[0],current[1]-1]
+        if upNeighbor[1] > -1 and upNeighbor not in self.obstacle:
             #up neighbor
             neighbor.append([current[0],current[1]-1])
 
-        if current[0] != (self.n_block-1):
+        rightNeighbor = [current[0]+1,current[1]]
+        if rightNeighbor[0] < self.n_block and rightNeighbor not in self.obstacle:
             #right neighbor
             neighbor.append([current[0]+1,current[1]])
 
-        if current[1] != (self.n_block-1):
+        downNeighbor = [current[0],current[1]+1]
+        if downNeighbor[1] < self.n_block and downNeighbor not in self.obstacle:
             #down neighbor
             neighbor.append([current[0],current[1]+1])
 
