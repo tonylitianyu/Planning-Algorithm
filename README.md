@@ -15,7 +15,6 @@ python3 main.py (algorithm name)
 
 ## Examples
  
- ---
  
- ## A* Path Planning<br />
- ![](a_star_gif.gif)
+### A* Path Planning
+![](a_star_gif.gif)
