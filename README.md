@@ -1,10 +1,21 @@
 # Planning-Algorithm-Visualization
 
- Implementation practice for popular planning algorithms: A*, D*, RRT, RRT*
+A repo for visualizing common planning algorithm.
  
- Using the Pygame library for visualization<br />
+## Installation
+Use pip to install pygame.
+```bash
+pip3 install pygame
+```
+
+## Usage
+```bash
+python3 main.py (algorithm name)
+```
+
+## Examples
  
- ---<br />
+ ---
  
  ## A* Path Planning<br />
  ![](a_star_gif.gif)
