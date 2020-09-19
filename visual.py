@@ -62,8 +62,9 @@ class Grid:
             for j in range(self.n_block):
                 rect = pygame.Rect(i*blockSize,j*blockSize,blockSize,blockSize)
                 
-
-                if self.gridArray[i][j] == 1:
+                if self.gridArray[i][j] == 0:
+                    pygame.draw.rect(self.SCREEN,(250,250,250),rect,0)
+                elif self.gridArray[i][j] == 1:
                     #draw origin
                     pygame.draw.rect(self.SCREEN,(0,0,255),rect,0)
 
@@ -72,7 +73,7 @@ class Grid:
                     pygame.draw.rect(self.SCREEN,(255,165,0),rect,0)
 
                 elif self.gridArray[i][j] == 3:
-                    pygame.draw.rect(self.SCREEN,(120,120,120),rect,0)
+                    pygame.draw.rect(self.SCREEN,(100,100,100),rect,0)
                     
                 elif self.gridArray[i][j] == 4:
                     pygame.draw.rect(self.SCREEN,(255,0,0),rect,0)
@@ -81,7 +82,7 @@ class Grid:
                     pygame.draw.rect(self.SCREEN,(0,255,0),rect,0)
 
                 
-                pygame.draw.rect(self.SCREEN,(200,200,200),rect,1)
+                pygame.draw.rect(self.SCREEN,(50,50,50),rect,1)
 
                 
 

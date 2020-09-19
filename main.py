@@ -1,29 +1,35 @@
 
 import sys
 import pygame
-from visual import Grid
+from visual import Grid #visualization grid
 from a_star import A_Star
+from maze import Maze #maze obstacle
 
-n_block = 10
+n_block = 20
 origin = [0,0]
 target = [n_block-3, n_block-5]
-obstacle = [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]]
+#obstacle = [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]]
 finalPath = []
 
 
-grids = Grid(windowSize=400,n_block=n_block, origin=origin, target=target, obstacle=obstacle)
+
+maze = Maze(n_block=n_block,origin=origin,target=target)
+obstacle = maze.createObstacle()
+
+
+grids_visual = Grid(windowSize=400,n_block=n_block, origin=origin, target=target, obstacle=obstacle)
 agent = A_Star(origin=origin, target=target, n_block=n_block, obstacle=obstacle)
 
 pygame.time.wait(5000)
 while True:
-    grids.drawGrid()
+    grids_visual.drawGrid()
     done,result,visited = agent.nextStep()
     
-    grids.drawVisited(visited)
+    grids_visual.drawVisited(visited)
 
     if done:
         finalPath = result
-    grids.drawPath(finalPath)
+    grids_visual.drawPath(finalPath)
 
     pygame.time.wait(100)
 

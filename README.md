@@ -17,4 +17,4 @@ python3 main.py (algorithm name)
  
  
 ### A* Path Planning
-![](a_star_gif.gif)
+![](a_star_gif_2.gif)
