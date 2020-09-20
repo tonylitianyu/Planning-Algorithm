@@ -1,5 +1,6 @@
 import random
 import math
+import time
 import matplotlib.pyplot as plt
 from rrt.rrt import RRT
 from rrt.collision import Collision
@@ -9,7 +10,7 @@ import numpy as np
 
 random.seed(6)
 
-im = Image.open('rrt/N_map.png').convert('L')
+im = Image.open('rrt/sparse_map.png').convert('L')
 
 im = np.flipud(im)
 
@@ -21,16 +22,16 @@ n_step = 1000
 
 #generate random origin and target
 collision = Collision(im)
-q_init_curr = collision.getCollisionFreePoint()
+q_init_curr = [0,100]#collision.getCollisionFreePoint()
 q_init = {"curr":q_init_curr,"parent":None}
 
-q_target_curr = collision.getCollisionFreePoint()
+q_target_curr = [85,0]#collision.getCollisionFreePoint()
 q_target = {"curr":q_target_curr,"parent":q_target_curr}
 
 
 #initialization for agent
 rrt_agent = RRT(D,q_init,max_step_allow)
-
+time.sleep(4)
 #prepare for plotting
 fig = plt.gcf()
 fig.show()

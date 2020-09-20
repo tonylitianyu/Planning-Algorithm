@@ -1,6 +1,6 @@
 # Planning-Algorithm-Visualization
 
-A repo for visualizing common planning algorithm.
+A repo for visualizing popular planning algorithm.
  
 ## Installation
 Use pip to install pygame.
@@ -10,11 +10,14 @@ pip3 install pygame
 
 ## Usage
 ```bash
-python3 main.py (algorithm name)
+python3 (algorithm name)_main.py
 ```
 
 ## Examples
  
  
 ### A* Path Planning
-![](a_star/a_star_gif_2.gif)
+<img src="a_star/a_star_gif_2.gif" alt="astar" width="400"/>  
+  
+### RRT Path Planning
+<img src="rrt/rrt_gif.gif" alt="rrt" width="400"/>
