@@ -2,10 +2,10 @@
 
 A repo for visualizing popular planning algorithm.
  
-## Installation
-Use pip to install pygame.
+## Dependencies
 ```bash
-pip3 install pygame
+pygame
+imageio
 ```
 
 ## Usage
